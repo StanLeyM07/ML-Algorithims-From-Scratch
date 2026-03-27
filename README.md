@@ -92,10 +92,8 @@ Planned algorithms include:
 - Gradient Boosting
 - AdaBoost
 - K-Means Clustering
-- Hierarchical Clustering
 - Principal Component Analysis (PCA)
-- DBSCAN
-- Perceptron
+
 
 ## Comparison Strategy Per Algorithm
 
@@ -148,7 +146,7 @@ Contributions are welcome for:
 
 ## Final Goal
 
-Build a complete, high-quality traditional machine learning learning lab where each major algorithm is:
+Build a complete, high-quality traditional machine learning lab where each major algorithm is:
 
 - implemented from scratch,
 - compared against a library version,
