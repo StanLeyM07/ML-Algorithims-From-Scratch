@@ -30,9 +30,19 @@ The comparison approach helps ensure correctness and gives deeper insight into m
 
 - Decision_tree.py
 	- Custom Decision Tree implementation built from scratch.
+- Linear_regression.py
+	- Custom Linear Regression implementation built from scratch using gradient descent.
+- Logistic_regression.py
+	- Custom Logistic Regression implementation built from scratch using sigmoid + gradient descent.
+- KNN_classifier.py
+	- Custom K-Nearest Neighbors classifier implementation built from scratch.
+- Naive_bayes.py
+	- Custom Gaussian Naive Bayes classifier implementation built from scratch.
+- Perceptron.py
+	- Custom Perceptron binary classifier implementation built from scratch.
 - main.py
-	- Dataset loading, train/test split, model training, and evaluation.
-	- Compares custom models with library-based versions.
+	- Runs clearly separated experiments.
+	- Prints dataset name, task type, tested models, and evaluation metrics.
 - README.md
 	- Project documentation and roadmap.
 
@@ -52,22 +62,198 @@ Implemented features:
 
 - DecisionTreeClassifier from scikit-learn is used as a reference baseline.
 
+### Linear Regression (Custom)
+
+Implemented features:
+
+- Weight and bias learning with gradient descent.
+- Iterative optimization over mean squared error objective.
+- Numeric prediction for continuous targets.
+
+### Library Baseline
+
+- LinearRegression from scikit-learn is used as a reference baseline.
+
+### Logistic Regression (Custom)
+
+Implemented features:
+
+- Sigmoid-based probability prediction.
+- Gradient descent optimization for binary classification.
+- Threshold-based class prediction.
+
+### Library Baseline
+
+- LogisticRegression from scikit-learn is used as a reference baseline.
+
+### K-Nearest Neighbors (KNN) Classifier (Custom)
+
+Implemented features:
+
+- Euclidean distance-based nearest-neighbor search.
+- Majority vote among top-k neighbors.
+- Full prediction pipeline for binary or multiclass classification.
+
+### Library Baseline
+
+- KNeighborsClassifier from scikit-learn is used as a reference baseline.
+
+### Gaussian Naive Bayes (Custom)
+
+Implemented features:
+
+- Class-wise mean, variance, and prior estimation.
+- Gaussian likelihood computation in log-space for numerical stability.
+- Maximum posterior class prediction.
+
+### Library Baseline
+
+- GaussianNB from scikit-learn is used as a reference baseline.
+
+### Perceptron (Custom)
+
+Implemented features:
+
+- Binary linear classifier with iterative weight updates.
+- Mistake-driven perceptron learning rule.
+- Threshold-based class prediction.
+
+### Library Baseline
+
+- Perceptron from scikit-learn is used as a reference baseline.
+
+## Two Problem Types In This Project
+
+### 1) Classification Problems
+
+Goal: Predict discrete class labels (for example 0 or 1, or multiple classes).
+
+Models that work here:
+
+- Decision Tree (custom and sklearn)
+- Logistic Regression (custom and sklearn)
+- KNN (custom and sklearn)
+- Gaussian Naive Bayes (custom and sklearn)
+- Perceptron (custom and sklearn)
+- Future additions: SVM, Random Forest, Gradient Boosting
+
+### 2) Regression Problems
+
+Goal: Predict continuous numeric values.
+
+Models that work here:
+
+- Linear Regression (custom and sklearn)
+- Future additions: Polynomial Regression, regularized linear models, tree-based regressors
+
+## Current Experiments (Exactly What Is Tested)
+
+### Experiment 1: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom DecisionTree (from scratch, max_depth=3).
+	- sklearn DecisionTreeClassifier (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 2: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom LogisticRegressionModel (from scratch, gradient descent).
+	- sklearn LogisticRegression (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 3: Regression
+
+- Dataset: Diabetes dataset from scikit-learn.
+- Task: Regression.
+- Models compared:
+	- Custom LinearRegressionModel (from scratch, gradient descent).
+	- sklearn LinearRegression (library baseline).
+- Metrics shown:
+	- MSE
+	- RMSE
+	- MAE
+	- R2 Score
+
+### Experiment 4: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom KNNClassifier (from scratch, k=5).
+	- sklearn KNeighborsClassifier (library baseline, k=5).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 5: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom GaussianNaiveBayes (from scratch).
+	- sklearn GaussianNB (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 6: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom PerceptronModel (from scratch).
+	- sklearn Perceptron (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
 ## Dataset and Evaluation Workflow
 
-The project currently supports running comparisons on real datasets (for example Breast Cancer and Digits in previous runs), with a standard train/test split pipeline.
+The project currently supports running comparisons on real datasets (Breast Cancer for classification and Diabetes for regression), with a standard train/test split pipeline.
 
-Evaluation includes:
+Evaluation includes classification and regression metrics depending on the experiment.
 
-- Accuracy
-- Confusion Matrix
-- Classification Report (Precision, Recall, F1)
-- Predicted class coverage
+Each experiment also prints model HYPERPARAMETERS in uppercase so it is always clear which configuration is being tested.
 
 This makes it easy to inspect both overall performance and class-level behavior.
+
+## Hyperparameters and Tuning Importance
+
+Hyperparameters are settings chosen before training (for example `MAX_DEPTH`, `LEARNING_RATE`, `N_ITERS`, `K`, and `MAX_ITER`). They are not learned directly from data.
+
+Why they matter:
+
+- They control model complexity and learning behavior.
+- They can reduce underfitting or overfitting.
+- They often have a direct impact on accuracy, error metrics, and stability.
+- Good tuning can make a large performance difference even with the same algorithm and dataset.
+
+In this project, we always show hyperparameters with experiment results so tuning decisions are transparent and reproducible.
 
 ## Why This Repository Matters
 
 Most people can call model.fit quickly, but fewer can explain exactly what happens inside the model.
+
+An AI model can reproduce similar code in seconds. The goal of this repository is different: to understand how each model works internally and why it behaves the way it does on real data.
 
 By building algorithms from scratch, this project develops:
 
@@ -82,10 +268,11 @@ The goal is to implement almost all major traditional ML methods from scratch an
 
 Planned algorithms include:
 
-- Linear Regression
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
-- Naive Bayes
+- Linear Regression (implemented)
+- Logistic Regression (implemented)
+- K-Nearest Neighbors (KNN) (implemented)
+- Naive Bayes (implemented)
+- Perceptron (implemented)
 - Support Vector Machine (SVM)
 - Decision Tree (in progress and improvements ongoing)
 - Random Forest
@@ -122,9 +309,8 @@ python main.py
 
 3. Review output metrics in the terminal:
 
-- Accuracy scores
-- Confusion matrices
-- Classification reports
+- Classification metrics for Decision Tree, Logistic Regression, KNN, Naive Bayes, and Perceptron experiments
+- Regression metrics for Linear Regression experiment
 
 ## Future Improvements
 
