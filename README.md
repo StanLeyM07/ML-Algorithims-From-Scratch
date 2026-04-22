@@ -134,6 +134,78 @@ Implemented features:
 
 - Perceptron from scikit-learn is used as a reference baseline.
 
+### Linear SVM (Custom)
+
+Implemented features:
+
+- Soft-margin linear SVM optimization with hinge-loss objective.
+- L2 regularization for weight stability.
+- Binary class prediction from the learned separating hyperplane.
+
+### Library Baseline
+
+- SVC with linear kernel from scikit-learn is used as a reference baseline.
+
+### Random Forest Classifier (Custom)
+
+Implemented features:
+
+- Bootstrap sampling per tree.
+- Random feature sub-sampling for split search.
+- Majority-vote aggregation across trees.
+
+### Library Baseline
+
+- RandomForestClassifier from scikit-learn is used as a reference baseline.
+
+### AdaBoost Classifier (Custom)
+
+Implemented features:
+
+- Iterative decision-stump training.
+- Sample re-weighting to focus on hard examples.
+- Weighted ensemble voting using learner confidence.
+
+### Library Baseline
+
+- AdaBoostClassifier from scikit-learn is used as a reference baseline.
+
+### Gradient Boosting Regressor (Custom)
+
+Implemented features:
+
+- Residual-fitting with shallow regression trees.
+- Shrinkage via learning-rate scaling.
+- Additive boosting updates for progressive error reduction.
+
+### Library Baseline
+
+- GradientBoostingRegressor from scikit-learn is used as a reference baseline.
+
+### K-Means Clustering (Custom)
+
+Implemented features:
+
+- Random centroid initialization with reproducible seed.
+- Iterative assignment and centroid update steps.
+- Convergence check based on centroid movement tolerance.
+
+### Library Baseline
+
+- KMeans from scikit-learn is used as a reference baseline.
+
+### Principal Component Analysis (PCA) (Custom)
+
+Implemented features:
+
+- Feature centering and covariance matrix construction.
+- Eigen-decomposition for principal direction extraction.
+- Dimensionality reduction and inverse reconstruction support.
+
+### Library Baseline
+
+- PCA from scikit-learn is used as a reference baseline.
+
 ## Three Problem Types In This Project
 
 ### 1) Classification Problems
