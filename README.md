@@ -413,6 +413,19 @@ pip install numpy matplotlib scikit-learn
 python main.py
 ```
 
+Or run the desktop GUI:
+
+```bash
+python gui.py
+```
+
+The GUI lets you:
+
+- Select the model to test
+- Choose `custom` or `sklearn` implementation
+- Run the selected experiment in one click
+- View metrics directly in the app instead of terminal output
+
 3. Review output metrics in the terminal:
 
 - Classification metrics for Decision Tree, Logistic Regression, KNN, Naive Bayes, Perceptron, SVM, Random Forest, and AdaBoost experiments
