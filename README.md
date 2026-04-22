@@ -40,6 +40,18 @@ The comparison approach helps ensure correctness and gives deeper insight into m
 	- Custom Gaussian Naive Bayes classifier implementation built from scratch.
 - Perceptron.py
 	- Custom Perceptron binary classifier implementation built from scratch.
+- SVM_classifier.py
+	- Custom Linear SVM binary classifier implementation built from scratch.
+- Random_forest.py
+	- Custom Random Forest classifier implementation built from scratch.
+- Gradient_boosting.py
+	- Custom Gradient Boosting regressor implementation built from scratch.
+- AdaBoost.py
+	- Custom AdaBoost classifier implementation built from scratch.
+- KMeans.py
+	- Custom K-Means clustering implementation built from scratch.
+- PCA.py
+	- Custom Principal Component Analysis (PCA) implementation built from scratch.
 - main.py
 	- Runs clearly separated experiments.
 	- Prints dataset name, task type, tested models, and evaluation metrics.
@@ -122,7 +134,7 @@ Implemented features:
 
 - Perceptron from scikit-learn is used as a reference baseline.
 
-## Two Problem Types In This Project
+## Three Problem Types In This Project
 
 ### 1) Classification Problems
 
@@ -135,7 +147,9 @@ Models that work here:
 - KNN (custom and sklearn)
 - Gaussian Naive Bayes (custom and sklearn)
 - Perceptron (custom and sklearn)
-- Future additions: SVM, Random Forest, Gradient Boosting
+- Linear SVM (custom and sklearn)
+- Random Forest (custom and sklearn)
+- AdaBoost (custom and sklearn)
 
 ### 2) Regression Problems
 
@@ -144,7 +158,17 @@ Goal: Predict continuous numeric values.
 Models that work here:
 
 - Linear Regression (custom and sklearn)
-- Future additions: Polynomial Regression, regularized linear models, tree-based regressors
+- Gradient Boosting Regressor (custom and sklearn)
+- Future additions: Polynomial Regression, regularized linear models
+
+### 3) Unsupervised Learning Problems
+
+Goal: Discover data structure without target labels.
+
+Models that work here:
+
+- K-Means clustering (custom and sklearn)
+- PCA dimensionality reduction (custom and sklearn)
 
 ## Current Experiments (Exactly What Is Tested)
 
@@ -226,11 +250,85 @@ Models that work here:
 	- Classification Report (Precision, Recall, F1)
 	- Predicted classes
 
+### Experiment 7: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom LinearSVM (from scratch, hinge loss).
+	- sklearn SVC with linear kernel (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 8: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom RandomForestClassifierScratch (from scratch).
+	- sklearn RandomForestClassifier (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 9: Classification
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Binary classification.
+- Models compared:
+	- Custom AdaBoostClassifierScratch (from scratch).
+	- sklearn AdaBoostClassifier (library baseline).
+- Metrics shown:
+	- Accuracy
+	- Confusion Matrix
+	- Classification Report (Precision, Recall, F1)
+	- Predicted classes
+
+### Experiment 10: Regression
+
+- Dataset: Diabetes dataset from scikit-learn.
+- Task: Regression.
+- Models compared:
+	- Custom GradientBoostingRegressorScratch (from scratch).
+	- sklearn GradientBoostingRegressor (library baseline).
+- Metrics shown:
+	- MSE
+	- RMSE
+	- MAE
+	- R2 Score
+
+### Experiment 11: Unsupervised Clustering
+
+- Dataset: Iris dataset from scikit-learn.
+- Task: Clustering.
+- Models compared:
+	- Custom KMeansScratch (from scratch).
+	- sklearn KMeans (library baseline).
+- Metrics shown:
+	- Adjusted Rand Index (vs true labels)
+	- Silhouette Score
+
+### Experiment 12: Unsupervised Dimensionality Reduction
+
+- Dataset: Breast Cancer dataset from scikit-learn.
+- Task: Feature compression to 2 dimensions.
+- Models compared:
+	- Custom PCAScratch (from scratch).
+	- sklearn PCA (library baseline).
+- Metrics shown:
+	- Explained Variance Ratio
+	- Reconstruction MSE
+
 ## Dataset and Evaluation Workflow
 
-The project currently supports running comparisons on real datasets (Breast Cancer for classification and Diabetes for regression), with a standard train/test split pipeline.
+The project currently supports running comparisons on real datasets (Breast Cancer for classification and PCA, Diabetes for regression, and Iris for clustering), with a standard train/test split pipeline for supervised tasks.
 
-Evaluation includes classification and regression metrics depending on the experiment.
+Evaluation includes classification, regression, clustering, and dimensionality-reduction metrics depending on the experiment.
 
 Each experiment also prints model HYPERPARAMETERS in uppercase so it is always clear which configuration is being tested.
 
@@ -266,20 +364,28 @@ By building algorithms from scratch, this project develops:
 
 The goal is to implement almost all major traditional ML methods from scratch and compare each one against a library equivalent.
 
-Planned algorithms include:
+Current implementation status:
 
+- Decision Tree (implemented)
 - Linear Regression (implemented)
 - Logistic Regression (implemented)
 - K-Nearest Neighbors (KNN) (implemented)
 - Naive Bayes (implemented)
 - Perceptron (implemented)
-- Support Vector Machine (SVM)
-- Decision Tree (in progress and improvements ongoing)
-- Random Forest
-- Gradient Boosting
-- AdaBoost
-- K-Means Clustering
-- Principal Component Analysis (PCA)
+- Support Vector Machine (SVM) (implemented)
+- Random Forest (implemented)
+- Gradient Boosting (implemented: regressor)
+- AdaBoost (implemented)
+- K-Means Clustering (implemented)
+- Principal Component Analysis (PCA) (implemented)
+
+Planned next algorithms:
+
+- XGBoost-style boosting variants
+- Extra Trees
+- DBSCAN
+- Hierarchical Clustering
+- t-SNE or UMAP for nonlinear dimensionality reduction
 
 
 ## Comparison Strategy Per Algorithm
@@ -309,8 +415,10 @@ python main.py
 
 3. Review output metrics in the terminal:
 
-- Classification metrics for Decision Tree, Logistic Regression, KNN, Naive Bayes, and Perceptron experiments
-- Regression metrics for Linear Regression experiment
+- Classification metrics for Decision Tree, Logistic Regression, KNN, Naive Bayes, Perceptron, SVM, Random Forest, and AdaBoost experiments
+- Regression metrics for Linear Regression and Gradient Boosting experiments
+- Clustering metrics for K-Means experiment
+- Dimensionality-reduction metrics for PCA experiment
 
 ## Future Improvements
 
